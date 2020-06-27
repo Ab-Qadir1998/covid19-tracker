@@ -1,9 +1,13 @@
 import React from 'react';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
-import styles from './Card.module.css'
+import styles from './Card.module.css';
+import CountUp from 'react-countup';
 
-export const Cards = (props) => {
-    console.log(props);
+export const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}}) => {
+    console.log(confirmed)
+    if(!confirmed){
+        return 'loading...'  
+    }
 
     return (
         <div className={styles.container}>
@@ -14,10 +18,15 @@ export const Cards = (props) => {
                             Infected
                 </Typography>
                         <Typography varient="h5">
-                            REAL DATA
+                            <CountUp
+                            start={0}
+                            end={confirmed.value}
+                            duration={2.5}
+                            seperator=","
+                            />
                 </Typography>
                         <Typography color="textSecondary" gutterBottom>
-                            REAL DATA
+                            {new Date(lastUpdate).toDateString()}
                 </Typography>
                         <Typography varient="body2">Number of active cases of COVID-19</Typography>
                     </CardContent>
