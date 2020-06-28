@@ -15,3 +15,9 @@ margin:50px 0 ;
 .deaths {
     border-bottom: 10px solid rgba(209, 22, 22, 0.698);
 }
+
+@media (max-width:770px){
+    .card {
+        margin: 2% 0 !important;
+    }
+}
